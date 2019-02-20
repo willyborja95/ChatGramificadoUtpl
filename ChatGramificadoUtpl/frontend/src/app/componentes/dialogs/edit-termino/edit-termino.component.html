@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Editar Término</h2>
+
+<form [formGroup]="terminoForm">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput name="Término" placeholder="Término" required formControlName="termino">
+      <mat-error>Este campo es requerido</mat-error>
+      <mat-hint>Escriba nombre de la termino</mat-hint>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-content>
+    <mat-form-field>
+      <textarea matInput required formControlName="descripcion"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions [attr.align]="'end'">
+    <button mat-button mat-dialog-close color="secondary">Close</button>
+    <button mat-raised-button color="primary" mat-dialog-close [disabled]='!terminoForm.valid'
+      (click)="editTermino()">Guardar</button>
+  </mat-dialog-actions>
+</form>

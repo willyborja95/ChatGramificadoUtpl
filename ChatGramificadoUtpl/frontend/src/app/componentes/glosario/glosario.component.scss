@@ -1,0 +1,19 @@
+  .example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+.btn-agregarChat{
+  position: fixed;
+  left:95%;
+  right:0%;
+  bottom:0%;
+  top:88%;
+  z-index: 2400;
+}

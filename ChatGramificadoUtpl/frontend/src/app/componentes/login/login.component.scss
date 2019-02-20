@@ -1,0 +1,21 @@
+.login{
+margin-top: 7rem;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+
+.bodyRegistro{
+    height: 100%;
+    width: 100%;
+    background-image: url('../../../assets/imagenes/chatLogin.jpg');
+    background-size: cover;
+    position: absolute;
+}

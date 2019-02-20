@@ -1,0 +1,21 @@
+<button mat-fab class="btn-agregarChat bg-naranja" (click)="agregarSala()">
+  <mat-icon>add</mat-icon>
+</button>
+<ng-container >
+  <div class="row mt-5">
+    <mat-card class="col-md-4 mb-4" *ngFor="let sala of salas">
+      <mat-card-header>
+        <mat-card-title>{{sala.nombreChat | titlecase}}</mat-card-title>
+        <mat-card-subtitle>{{sala.fecha | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions [align]="'end'">
+        <button mat-icon-button (click)="detalles(sala._id)">
+          <mat-icon>forward</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>
+<!-- <ng-template #elseTemplate>
+  <p>No hay salas.</p>
+</ng-template> -->

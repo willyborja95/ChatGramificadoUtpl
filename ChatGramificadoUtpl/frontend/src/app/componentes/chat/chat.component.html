@@ -1,0 +1,64 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="[ '/dashboardChats' ]" target="_blank">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span mat-line>Dashboard</span>
+      </a>
+      <a mat-list-item [routerLink]="[ '/confChat' ]" target="_blank">
+        <mat-icon mat-list-icon>book</mat-icon>
+        <span mat-line>Glosario</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>UTPL Chat</span>
+    </mat-toolbar>
+
+    <div class="app-content">
+
+      <button mat-fab (click)="onClickUserInfo()">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <div class="chat-container">
+        <mat-card class="main-card">
+          <mat-list class="chat-list">
+            <mat-list-item *ngFor="let message of messages"
+              [ngClass]="[(message.action === undefined && message.from.id === user.id)? 'chat-list-item': '']">
+              <img mat-list-avatar *ngIf="message.action === undefined" [src]="message.from.avatar">
+              <h4 mat-line *ngIf="message.action === undefined">
+                <b>{{message.from.name}}</b>
+              </h4>
+              <p mat-line *ngIf="message.action === undefined">
+                <span> {{message.content}} </span>
+              </p>
+              <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">
+                <span> <b>{{message.from.name}}</b> se ha unido a la conversación. </span>
+              </p>
+              <p mat-line *ngIf="message.action === action.RENAME" class="chat-notification">
+                <span> <b>{{message.content.previousUsername}}</b> es ahora <b>{{message.content.username}}</b> </span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+          <div class="chat-footer-container">
+            <mat-icon>message</mat-icon>
+            <mat-form-field class="chat-input">
+              <input matInput #inputMessage maxlength="140" placeholder="Escribe tu mensaje"
+                [(ngModel)]="messageContent" (keyup.enter)="sendMessage(messageContent)" autocomplete="off">
+              <mat-hint [align]="'end'">{{inputMessage.value.length}}/140</mat-hint>
+            </mat-form-field>
+            <button mat-fab (click)="addRoom()" *ngIf="isDocente">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-sidenav-container>

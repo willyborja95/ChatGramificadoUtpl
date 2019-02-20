@@ -1,0 +1,53 @@
+<div class="bodyRegistro">
+
+  <section class="login">
+    <div class="container">
+      <div class="row">
+        <mat-card class="col-md-5 col-sm-6 col-md-4 mx-auto">
+          <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Registrar">
+              <form class="example-container mt-4" [formGroup]="registroForm" (ngSubmit)="registro()">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombres</mat-label>
+                  <input matInput placeholder="Nombres" formControlName="nombres">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Apellidos</mat-label>
+                  <input matInput placeholder="Apellidos" formControlName="apellidos">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input matInput placeholder="Correo" formControlName="email">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput placeholder="Contraseña" type="password" formControlName="password">
+                </mat-form-field>
+                <mat-card-actions class="text-center">
+                  <button mat-button mat-raised-button color="primary" [disabled]='!registroForm.valid'>Registrarme</button>
+                  <button mat-button mat-raised-button color="warn" [disabled]='!registroForm.valid' (click)="resetForm()">Restablecer</button>
+                </mat-card-actions>
+              </form>
+            </mat-tab>
+            <mat-tab label="Ingresar">
+              <form [formGroup]="loginForm" (ngSubmit)="login()" class="example-container mt-4">
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input matInput placeholder="Correo" type="email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput placeholder="Contraseña" type="password" formControlName="password">
+                </mat-form-field>
+                <mat-card-actions class="text-center">
+                  <button mat-button mat-raised-button color="primary" [disabled]='!loginForm.valid'>Ingresar</button>
+                  <button mat-button mat-raised-button color="warn" [disabled]='!loginForm.valid' (click)="resetForm()">Restablecer</button>
+                </mat-card-actions>
+              </form>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+</div>
